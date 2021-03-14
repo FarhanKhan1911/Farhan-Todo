@@ -1,0 +1,70 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<div class="container pt-4">
+
+    <div class="row">
+        <div class="col-12">
+          <h2>Hello, {{user.username}}</h2>
+        </div>
+      </div>
+    <a class="button btn btn-primary btn-lg" href="{% url 'add' %}">Add TODO</a>
+
+    <hr>
+
+    <div class="border">
+        <div class="shadow">
+
+        {% if todos|length == 0 %}
+
+        <div class="alert alert-info text-center">
+            <p class="display-4">
+                NO TODOS
+            </p>
+        </div>
+
+        {% else %}
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Delete</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for todo in todos %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{todo.title}}</td>
+                            <td>
+                            {% if todo.status == 'C' %}
+                                ✔️
+                            {% else %}
+                                🕘
+                            {% endif %}
+                            </td>
+                            <td><a href="/delete-todo/{{todo.id}}" class="btn btn-danger">Delete</a></td>
+                            <td>
+                            {% if todo.status == 'P' %}
+                                <a href="/change-status/{{todo.id}}/C" title="Mark" class="">✔️</a>
+                            {% else %}
+                                <a href="/change-status/{{todo.id}}/P" title="Mark" class="">🕘</a>
+                            {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+    </div>
+</div>
+
+{% endblock content %}
