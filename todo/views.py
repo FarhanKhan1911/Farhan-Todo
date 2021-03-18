@@ -37,3 +37,6 @@ def change_status(request , id , status):
     todo.save()
     return redirect('main')
 
+
+
+
