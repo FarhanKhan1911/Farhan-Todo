@@ -32,6 +32,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username   # this is to give the data in profile.html file
-
-
-   
