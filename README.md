@@ -16,3 +16,6 @@ The main goal behind this project was to practice function based Django view.
   <li> Django v-3.0.7 </li>
   <li> Postgres-sql </li>
  </ul>
+
+# Website
+<h4> URL:- https://farhan-todo.herokuapp.com/ </h4>
